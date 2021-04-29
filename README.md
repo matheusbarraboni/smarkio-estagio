@@ -6,7 +6,7 @@ Passos para rodar esse projeto:
 2. Dentro do repositório rode `npm i` para instalar as dependêcias
 3. Entre no diretório backend com `cd backend` e faça novamente o *passo 2*
 4. Ainda dentro de backend crie um arquivo chamado ".env" para declarar as váriaveis de ambiente
-5. Declare as váriaveis listadas abaixo de acordo com o seu ambiente
+5. Dentro do arquivo .env declare as váriaveis listadas abaixo de acordo com o seu ambiente
   - API_KEY="Chave da sua API IBM Watson"
   - API_URL="URL da sua API IBM Watson"
   - DB_NAME="Nome da base de dados a ser utilizada"
