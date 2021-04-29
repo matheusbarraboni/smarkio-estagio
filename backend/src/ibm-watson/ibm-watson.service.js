@@ -1,14 +1,14 @@
-
 const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
 const { IamAuthenticator } = require('ibm-watson/auth')
 const fs = require('fs');
-
+const dotenv = require('dotenv')
+dotenv.config
 class IbmWatsonService {
   textToSpeech = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-      apikey: "API_KEY"
+      apikey: process.env.API_KEY
     }),
-    serviceUrl: "URL_KEY",
+    serviceUrl: process.env.API_URL,
     disableSslVerification: true
   })
 
@@ -28,7 +28,7 @@ class IbmWatsonService {
 
   generateFile(response, fileName) {
       const audio = response.result;
-      audio.pipe(fs.createWriteStream(`resources/${fileName}.mp3`));
+      audio.pipe(fs.createWriteStream(`../src/assets/${fileName}.mp3`));
   }
 }
 

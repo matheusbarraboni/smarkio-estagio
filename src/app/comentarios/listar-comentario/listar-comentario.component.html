@@ -1,3 +1,4 @@
+<div class="main">
 <h3>Comentários</h3>
 <div *ngIf="comentarios.length > 0">
 <mat-card *ngFor="let comentario of comentarios">
@@ -6,9 +7,13 @@
       <p>{{comentario.texto}}</p>
     </div>
     <div class="col">
-      <button color="primary" mat-raised-button>Ouvir</button>
+      <button color="primary" (click)="audio.play()" mat-raised-button>Ouvir</button>
+      <audio #audio>
+        <source [src]="'../../assets/'+comentario.id+'.mp3'" type="audio/mp3"/>
+      </audio>
     </div>
   </div>
 </mat-card>
 </div>
 <p *ngIf="comentarios.length <= 0">Não há comentários</p>
+</div>
