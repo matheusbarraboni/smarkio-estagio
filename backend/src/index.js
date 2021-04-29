@@ -1,32 +1,23 @@
-const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
-const { IamAuthenticator } = require('ibm-watson/auth')
-const fs = require('fs');
+const express = require('express')
+const ComentariosController = require('./controllers/ComentariosController')
+const comentariosController = new ComentariosController()
+const IbmWatsonService = require('./ibm-watson/ibm-watson.service')
+const ibmWatsonService = new IbmWatsonService()
 
-textToSpeech = new TextToSpeechV1({
-  authenticator: new IamAuthenticator({
-    apikey: "API_KEY"
-  }),
-  serviceUrl: "URL_SERVICE",
-  disableSslVerification: true
+const app = express();
+app.use(express.json())
+
+app.post('/comentario', async (req, res, next) => {
+  comentario = await comentariosController.createComentario(req.body.texto)
+  ibmWatsonService.getTextToSpeech(comentario.texto, comentario.id.toString())
+  res.status(201).json(comentario)
 })
 
-function getTextToSpeech(text, fileName) {
-  const synthesizeParams = {
-    text: text,
-    accept: 'audio/mp3',
-    voice: 'pt-BR_IsabelaV3Voice',
-  }
-  textToSpeech
-    .synthesize(synthesizeParams)
-    .then((response) => {generateFile(response, fileName)})
-    .catch(err => {
-      console.log('error:', err);
-    });
-}
+app.get('/comentario/getAll', async (req, res, next) => {
+  comentarios = await comentariosController.getAllComentarios()
+  console.log(comentarios)
+  res.status(200).json(comentarios)
+})
 
-function generateFile(response, fileName) {
-    const audio = response.result;
-    audio.pipe(fs.createWriteStream(`resources/${fileName}.mp3`));
-  }
 
-getTextToSpeech("Olá, Watson!", "audioteste")
+app.listen(3000, () => {console.log("Up and running. Porta 3000")})
