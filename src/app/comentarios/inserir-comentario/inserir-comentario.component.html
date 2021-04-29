@@ -1,0 +1,17 @@
+<mat-card>
+  <form (submit)="onSalvarComentario(comentarioForm)" #comentarioForm="ngForm">
+    <mat-form-field>
+      <h3>Comentário</h3>
+      <textarea
+        matInput
+        required
+        type="text"
+        name="texto"
+        ngModel
+        ></textarea>
+    </mat-form-field>
+    <button color="primary" mat-raised-button>
+      Cadastrar
+    </button>
+  </form>
+</mat-card>

@@ -1,0 +1,14 @@
+mat-form-field{
+  width: 100%;
+}
+
+textarea{
+  height: 200px;
+  border: 1px solid;
+  border-color: lightgrey;
+}
+
+button{
+  display: block;
+  width: 100%;
+}

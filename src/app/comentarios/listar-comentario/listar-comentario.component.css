@@ -1,0 +1,7 @@
+mat-card-content{
+  display: inline-block;
+  margin: 2rem;
+  margin-left: 0;
+  width: 80%;
+  background-color: magenta;
+}

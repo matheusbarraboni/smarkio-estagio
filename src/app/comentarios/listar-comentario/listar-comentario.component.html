@@ -1,0 +1,14 @@
+<h3>Comentários</h3>
+<div *ngIf="comentarios.length > 0">
+<mat-card *ngFor="let comentario of comentarios">
+  <div class="row">
+    <div class="col-10">
+      <p>{{comentario.texto}}</p>
+    </div>
+    <div class="col">
+      <button color="primary" mat-raised-button>Ouvir</button>
+    </div>
+  </div>
+</mat-card>
+</div>
+<p *ngIf="comentarios.length <= 0">Não há comentários</p>
