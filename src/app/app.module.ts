@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatGridListModule,
     MatDividerModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

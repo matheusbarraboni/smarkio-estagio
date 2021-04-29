@@ -19,6 +19,7 @@ export class InserirComentarioComponent implements OnInit {
       return
     }
     this.comentarioService.adicionarComentario(
+      form.value.id,
       form.value.texto
     )
     form.resetForm()

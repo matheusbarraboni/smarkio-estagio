@@ -3,8 +3,10 @@ const ComentariosController = require('./controllers/ComentariosController')
 const comentariosController = new ComentariosController()
 const IbmWatsonService = require('./ibm-watson/ibm-watson.service')
 const ibmWatsonService = new IbmWatsonService()
+const cors = require('cors')
 
 const app = express();
+app.use(cors())
 app.use(express.json())
 
 app.post('/comentario', async (req, res, next) => {

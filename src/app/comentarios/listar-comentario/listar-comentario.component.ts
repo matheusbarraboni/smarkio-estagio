@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Comentario } from '../comentario.model'
 import { ComentarioService} from '../comentario.service'
-import { Subscription, Observable } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-listar-comentario',
@@ -16,7 +16,7 @@ export class ListarComentarioComponent implements OnInit, OnDestroy {
   constructor(public comentarioService: ComentarioService) {}
 
   ngOnInit(): void {
-    this.comentarios = this.comentarioService.getComentarios()
+    this.comentarioService.getComentarios()
     this.comentariosSubscription = this.comentarioService
       .getListaComentariosAtualizadaObservable()
       .subscribe((comentarios: Comentario[]) => {
